@@ -1,7 +1,7 @@
 package org.launchcode.techjobs.oo;
 
-import java.nio.file.FileSystemLoopException;
 import java.util.Objects;
+import static java.lang.System.lineSeparator;
 
 public class Job {
 
@@ -34,7 +34,54 @@ public class Job {
 
     }
 
+    @Override
+    public String toString() {
+        if (!this.isValid()) {
+            return "OOPS! This job does not seem to exist.";
+        }
 
+        String emptyMessage = "Data not available";
+        String employer;
+        String location;
+        String positionType;
+        String coreCompetency;
+
+        if (name == "") {
+            setName(emptyMessage);
+        }
+        if ((this.employer == null)) {
+            employer = emptyMessage;
+        } else {
+            employer = this.employer.getValue();
+        }
+        if ((this.location == null)) {
+            location = emptyMessage;
+        } else {
+            location = this.location.getValue();
+        }
+        if ((this.positionType == null)) {
+            positionType = emptyMessage;
+        } else {
+            positionType = this.positionType.getValue();
+        }
+        if ((this.coreCompetency == null)) {
+            coreCompetency = emptyMessage;
+        } else {
+            coreCompetency = this.coreCompetency.getValue();
+        }
+
+        return System.lineSeparator() +
+                "ID: " + this.id + System.lineSeparator() +
+                "Name: " + name + System.lineSeparator() +
+                "Employer: " + employer + System.lineSeparator() +
+                "Location: " + location + System.lineSeparator() +
+                "Position Type: " + positionType + System.lineSeparator() +
+                "Core Competency: " + coreCompetency + System.lineSeparator();
+        }
+
+    private boolean isValid() {
+        return (this.name != null) || (this.employer!= null) || (this.location != null) || (this.positionType != null) || (this.coreCompetency != null);
+    }
 
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
