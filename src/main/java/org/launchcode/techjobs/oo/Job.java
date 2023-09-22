@@ -36,47 +36,40 @@ public class Job {
 
     @Override
     public String toString() {
-        if (!this.isValid()) {
-            return "OOPS! This job does not seem to exist.";
-        }
+//        if (!this.isValid()) {
+//            return "OOPS! This job does not seem to exist.";
+//        }
 
         String emptyMessage = "Data not available";
-        String employer;
-        String location;
-        String positionType;
-        String coreCompetency;
+//        String employer;
+//        String location;
+//        String positionType;
+//        String coreCompetency;
 
-        if (name == "") {
-            setName(emptyMessage);
+        if (name == "" || name == null) {
+            name = emptyMessage;
         }
-        if ((this.employer == null)) {
-            employer = emptyMessage;
-        } else {
-            employer = this.employer.getValue();
+        if ((employer.getValue() == "" || employer == null)) {
+            employer.setValue(emptyMessage);
         }
-        if ((this.location == null)) {
-            location = emptyMessage;
-        } else {
-            location = this.location.getValue();
+        if ((location.getValue() == "" || location == null)) {
+            location.setValue(emptyMessage);
         }
-        if ((this.positionType == null)) {
-            positionType = emptyMessage;
-        } else {
-            positionType = this.positionType.getValue();
+        if ((positionType.getValue() == "" || positionType == null)) {
+            positionType.setValue(emptyMessage);
         }
-        if ((this.coreCompetency == null)) {
-            coreCompetency = emptyMessage;
-        } else {
-            coreCompetency = this.coreCompetency.getValue();
+        if ((coreCompetency.getValue() == "" || coreCompetency == null)) {
+            coreCompetency.setValue(emptyMessage);
         }
 
-        return System.lineSeparator() +
-                "ID: " + this.id + System.lineSeparator() +
-                "Name: " + name + System.lineSeparator() +
-                "Employer: " + employer + System.lineSeparator() +
-                "Location: " + location + System.lineSeparator() +
-                "Position Type: " + positionType + System.lineSeparator() +
-                "Core Competency: " + coreCompetency + System.lineSeparator();
+        String newline = lineSeparator();
+
+        return newline + "ID: " + id + newline +
+                "Name: " + name + newline +
+                "Employer: " + employer + newline +
+                "Location: " + location + newline +
+                "Position Type: " + positionType + newline +
+                "Core Competency: " + coreCompetency + newline;
         }
 
     private boolean isValid() {
@@ -89,7 +82,7 @@ public class Job {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Job)) return false;
         Job job = (Job) o;
         return id == job.id;
     }
@@ -111,40 +104,40 @@ public class Job {
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Employer getEmployer() {
         return employer;
+    }
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
     }
 
     public Location getLocation() {
         return location;
     }
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public PositionType getPositionType() {
         return positionType;
+    }
+    public void setPositionType(PositionType positionType) {
+        this.positionType = positionType;
     }
 
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public void setPositionType(PositionType positionType) {
-        this.positionType = positionType;
-    }
-
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+
+
 }
+
+

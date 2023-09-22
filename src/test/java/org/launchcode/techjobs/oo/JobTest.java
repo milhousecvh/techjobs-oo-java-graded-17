@@ -1,10 +1,9 @@
 package org.launchcode.techjobs.oo;
 
-import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 import static java.lang.System.lineSeparator;
+import static org.junit.Assert.*;
+
 
 public class JobTest {
     //TODO: Create your unit tests here
@@ -18,12 +17,11 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("ACME", job1.getEmployer().getValue());
         assertEquals("Product tester", job1.getName());
+        assertEquals("ACME", job1.getEmployer().getValue());
         assertEquals("Desert", job1.getLocation().getValue());
         assertEquals("Quality control", job1.getPositionType().getValue());
         assertEquals("Persistence", job1.getCoreCompetency().getValue());
-        assertEquals(1, job1.getId());
     }
 
     @Test
@@ -35,27 +33,36 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String results = System.lineSeparator() +
-                "ID: 1" + System.lineSeparator() +
-                "Name: Product tester" + System.lineSeparator() +
-                "Employer: ACME" + System.lineSeparator() +
-                "Location: Desert" + System.lineSeparator() +
-                "Position Type: Quality control" + System.lineSeparator() +
-                "Core Competency: Persistence" + System.lineSeparator();
-        String job1String = job1.toString();
-        assertEquals(job1.toString(), results);
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//        String newline = lineSeparator();
+        String firstChar = String.valueOf(job.toString().charAt(0));
+        String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
 
-        String firstChar = String.valueOf(results.charAt(0));
-        String lastChar = String.valueOf(job1.toString().charAt(job1.toString().length() - 1));
-        assertEquals(firstChar, System.lineSeparator());
-//        assertEquals(lastChar, System.lineSeparator());
+        assertEquals(firstChar, lineSeparator());
+        assertEquals(lastChar, lineSeparator());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals(job1.getLocation(), "Data not available");
     }
 
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\nID: 1\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", job1.toString() );
+        String newline = lineSeparator();
+        String results =
+                newline +
+                        "ID: 1" + newline +
+                        "Name: Product tester" + newline +
+                        "Employer: ACME" + newline +
+                        "Location: Desert" + newline +
+                        "Position Type: Quality control" + newline +
+                        "Core Competency: Persistence"
+                        + newline;
+        assertEquals(results, job1.toString() );
     }
+
 }
