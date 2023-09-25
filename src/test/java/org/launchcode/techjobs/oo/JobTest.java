@@ -33,10 +33,10 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
-        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        String newline = lineSeparator();
-        String firstChar = String.valueOf(job.toString().substring(0,2));
-        String lastChar = String.valueOf(job.toString().substring(job.toString().length()-2));
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String newline = lineSeparator();
+        String firstChar = String.valueOf(job1.toString().substring(0,2));
+        String lastChar = String.valueOf(job1.toString().substring(job1.toString().length()-2));
 
         assertEquals(firstChar, lineSeparator());
         assertEquals(lastChar, lineSeparator());
@@ -44,25 +44,25 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals(job1.getLocation().toString(), "Data not available");
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals(job3.getLocation().toString(), "Data not available");
     }
 
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String newline = lineSeparator();
         String results =
                 newline +
-                        "ID: 1" + newline +
+                        "ID: 4" + newline +
                         "Name: Product tester" + newline +
                         "Employer: ACME" + newline +
                         "Location: Desert" + newline +
                         "Position Type: Quality control" + newline +
                         "Core Competency: Persistence"
                         + newline;
-        assertEquals(results, job1.toString() );
+        assertEquals(results, job4.toString() );
     }
 
 }
