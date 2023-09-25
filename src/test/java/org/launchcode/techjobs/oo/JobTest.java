@@ -35,8 +35,8 @@ public class JobTest {
     public void testToStringStartsAndEndsWithNewLine() {
         Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 //        String newline = lineSeparator();
-        String firstChar = String.valueOf(job.toString().charAt(0));
-        String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
+        String firstChar = String.valueOf(job.toString().substring(0,2));
+        String lastChar = String.valueOf(job.toString().substring(job.toString().length()-2));
 
         assertEquals(firstChar, lineSeparator());
         assertEquals(lastChar, lineSeparator());
@@ -45,7 +45,7 @@ public class JobTest {
     @Test
     public void testToStringHandlesEmptyField() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location(""), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals(job1.getLocation(), "Data not available");
+        assertEquals(job1.getLocation().toString(), "Data not available");
     }
 
 

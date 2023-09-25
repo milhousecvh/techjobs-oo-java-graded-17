@@ -18,8 +18,12 @@ public class JobField {
     }
 
     @Override
-    public String toString() {
-        return value;
+    public String toString(){
+        if (value == null || value.equals("")) {
+            return "Data not available";
+        } else {
+            return value;
+        }
     }
 
     // Getters and Setters:

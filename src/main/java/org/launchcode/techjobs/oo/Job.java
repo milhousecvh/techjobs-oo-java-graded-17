@@ -40,27 +40,27 @@ public class Job {
 //            return "OOPS! This job does not seem to exist.";
 //        }
 
-        String emptyMessage = "Data not available";
+//        String emptyMessage = "Data not available";
 //        String employer;
 //        String location;
-//        String positionType;
-//        String coreCompetency;
-
-        if (name == "" || name == null) {
-            name = emptyMessage;
-        }
-        if ((employer.getValue() == "" || employer == null)) {
-            employer.setValue(emptyMessage);
-        }
-        if ((location.getValue() == "" || location == null)) {
-            location.setValue(emptyMessage);
-        }
-        if ((positionType.getValue() == "" || positionType == null)) {
-            positionType.setValue(emptyMessage);
-        }
-        if ((coreCompetency.getValue() == "" || coreCompetency == null)) {
-            coreCompetency.setValue(emptyMessage);
-        }
+////        String positionType;
+////        String coreCompetency;
+//
+//        if (name == "" || name == null) {
+//            name = emptyMessage;
+//        }
+//        if ((employer.getValue() == "" || employer == null)) {
+//            employer.setValue(emptyMessage);
+//        }
+//        if ((location.getValue() == "" || location == null)) {
+//            location.setValue(emptyMessage);
+//        }
+//        if ((positionType.getValue() == "" || positionType == null)) {
+//            positionType.setValue(emptyMessage);
+//        }
+//        if ((coreCompetency.getValue() == "" || coreCompetency == null)) {
+//            coreCompetency.setValue(emptyMessage);
+//        }
 
         String newline = lineSeparator();
 
